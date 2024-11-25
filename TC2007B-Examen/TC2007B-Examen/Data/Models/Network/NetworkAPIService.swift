@@ -15,7 +15,7 @@ class NetworkAPIService {
     func fetchCovidData(url: URL, apiKey: String) async -> Covid? {
         // Add header with API
         let headers: HTTPHeaders = [
-            "X-API-Key": "+7l2Lo/qihXFewHndOYmbQ==PZn2JWF1uk3vHXOs"
+            "X-API-Key": apiKey
         ]
         
         // GET method with headers

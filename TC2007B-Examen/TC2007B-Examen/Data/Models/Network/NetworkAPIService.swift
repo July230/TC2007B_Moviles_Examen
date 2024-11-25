@@ -18,6 +18,10 @@ class NetworkAPIService {
             "X-API-Key": apiKey
         ]
         
+        // Print URL and headers for debugging
+        print("Fetching data from URL: \(url)")
+        print("Headers: \(headers)")
+        
         // GET method with headers
         let taskRequest = AF.request(url, method: .get, headers: headers).validate()
         let response = await taskRequest.serializingData().response
@@ -25,14 +29,19 @@ class NetworkAPIService {
         switch response.result {
         case .success(let data):
             do {
+                print("Data fetched successfully")
                 // JSONDecoder, object that decodifies istances of JSONs with decode
                 let covidData = try JSONDecoder().decode(Covid.self, from: data)
                 return covidData
             } catch {
+                print("Error decoding JSON: \(error)")
                 return nil
             }
         case let .failure(error):
-            debugPrint(error.localizedDescription) // Print error
+            if let httpResponse = response.response {
+                print("HTTP Status Code: \(httpResponse.statusCode)") // Print error
+            }
+            print("Request Error: \(error.localizedDescription)")
             return nil
         }
     }

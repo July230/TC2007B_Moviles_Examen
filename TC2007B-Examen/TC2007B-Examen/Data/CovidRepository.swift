@@ -11,7 +11,7 @@ struct API {
     static let baseURL = "https://api.api-ninjas.com/v1"
     
     struct routes {
-        static let covid = "/covid10"
+        static let covid = "/covid19"
     }
 }
 
@@ -43,9 +43,12 @@ class CovidRepository: CovidAPIProtocol {
             return nil
         }
         
-        return await nservice.fetchCovidData(url: URL(string: "\(API.baseURL)\(API.routes.covid)")!, apiKey: apiKey)
+        guard let url = URL(string: "\(API.baseURL)\(API.routes.covid)") else {
+            print("Invalid URL")
+            return nil
+        }
+        
+        return await nservice.fetchCovidData(url: url, apiKey: apiKey)
     }
-    
-    
 }
 

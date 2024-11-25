@@ -17,7 +17,7 @@ struct API {
 
 protocol CovidAPIProtocol {
     // "https://api.api-ninjas.com/v1/covid19"
-    func getCovidList() async -> Covid?
+    func getCovidList(country: String?, region: String?) async -> Covid?
 }
 
 class CovidRepository: CovidAPIProtocol {
@@ -37,13 +37,22 @@ class CovidRepository: CovidAPIProtocol {
         }
     }
     
-    func getCovidList() async -> Covid? {
+    // Either country or region must be set
+    func getCovidList(country: String? = nil, region: String? = nil) async -> Covid? {
         guard let apiKey = apiKey else {
             print("API key is missing")
             return nil
         }
         
-        guard let url = URL(string: "\(API.baseURL)\(API.routes.covid)") else {
+        // Build url with parameters
+        var urlString = "\(API.baseURL)\(API.routes.covid)"
+        if let country = country {
+            urlString += "?country=\(country)"
+        } else if let region {
+            urlString += "?region=\(region)"
+        }
+        
+        guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return nil
         }

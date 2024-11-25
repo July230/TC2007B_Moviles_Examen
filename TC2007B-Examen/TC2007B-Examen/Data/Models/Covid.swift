@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Covid: Codable, Identifiable {
-    var id: String { "\(country)-\(region)" } // We will use Country and region as ID
+struct Covid: Codable {
     var country: String
     var region: String
     var cases: [String: Cases] // Dictionary to store total and new
@@ -17,4 +16,9 @@ struct Covid: Codable, Identifiable {
 struct Cases: Codable {
     var total: Int
     var new: Int
+}
+
+struct CovidBase: Identifiable {
+    var id: String { "\(covid.country)-\(covid.region)" } // We will use Country and region as ID
+    var covid: Covid
 }

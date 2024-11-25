@@ -26,7 +26,8 @@ class NetworkAPIService {
         case .success(let data):
             do {
                 // JSONDecoder, object that decodifies istances of JSONs with decode
-                return try JSONDecoder().decode(Covid.self, from: data)
+                let covidData = try JSONDecoder().decode(Covid.self, from: data)
+                return covidData
             } catch {
                 return nil
             }

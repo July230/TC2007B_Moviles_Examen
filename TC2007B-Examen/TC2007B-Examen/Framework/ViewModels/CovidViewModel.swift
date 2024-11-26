@@ -17,7 +17,7 @@ class CovidViewModel: ObservableObject {
     }
     
     @MainActor
-    func getCovidList(country: String? = nil, region: String? = nil) async {
+    func getCovidList(country: String? = nil) async {
         guard let results = await covidListRequirement.getCovidList(country: country) else {
             print("Failed to fetch Covid data")
             return

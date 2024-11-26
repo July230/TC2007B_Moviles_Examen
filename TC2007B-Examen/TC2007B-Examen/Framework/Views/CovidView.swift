@@ -17,10 +17,12 @@ struct CovidView: View {
             VStack {
                 // Input fields for country and region
                 HStack {
+                    Text("Bienvenido a la consulta de casos de covid por país. Los países deben ser ingresados en inglés")
                     TextField("Ingresa un país: ", text: $countryInput)
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .font(.title2)
+                        .keyboardType(.default) // Keyboard type
                 }.padding()
                 
                 Button {
@@ -28,8 +30,16 @@ struct CovidView: View {
                         errorMessage = "Por favor ingresa un país."
                         return
                     }
+                    
+                    // Clean spaces in input
+                    let trimmedCountry = countryInput.trimmingCharacters(in: .whitespacesAndNewlines)
+                    countryInput = trimmedCountry
+                    
+                    
                     print("Buscando país")
                     Task {
+                        // Restart previuos results
+                        covidViewModel.covidList = []
                         isLoading = true
                         errorMessage = nil
                         await covidViewModel.getCovidList(country: countryInput)

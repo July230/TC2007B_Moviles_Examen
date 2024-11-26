@@ -20,6 +20,7 @@ struct CovidView: View {
                     TextField("Ingresa un país: ", text: $countryInput)
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .font(.title2)
                 }.padding()
                 
                 Button {
@@ -45,6 +46,7 @@ struct CovidView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                        .font(.title2)
                 }
                 
                 if isLoading {
@@ -63,6 +65,9 @@ struct CovidView: View {
                     List(covidViewModel.covidList) { covid in
                         VStack (alignment: .leading) {
                             Text(covid.covid.country)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            
                             Text(covid.covid.region)
                                 .foregroundColor(.gray)
                                 .font(.subheadline)
@@ -71,17 +76,24 @@ struct CovidView: View {
                                 if let caseData = covid.covid.cases[date] {
                                     Text("Fecha: \(date)")
                                         .font(.caption)
+                                        .font(.title3)
                                     Text("Total: \(caseData.total). Nuevos casos: \(caseData.new)")
                                         .font(.caption2)
+                                        .foregroundColor(.red)
                                 }
                             }
                         }
                         .padding()
                     }
+                    .padding()
                 }
             }
             .navigationTitle("Datos COVID")
             .padding()
         }
     }
+}
+
+#Preview {
+    CovidView()
 }

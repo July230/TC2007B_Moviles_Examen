@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BEFBD1B12CF523BD00C92F63 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEFBD1B02CF523BD00C92F63 /* Alamofire */; };
+		BEFBD1B42CF523CE00C92F63 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BEFBD1B32CF523CE00C92F63 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BEFBD18B2CF50D6000C92F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		BEFBD1942CF50D6000C92F63 /* TC2007B-ExamenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TC2007B-ExamenUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BEFBD1C72CF5319900C92F63 /* Exceptions for "TC2007B-Examen" folder in "TC2007B-Examen" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BEFBD1792CF50D5E00C92F63 /* TC2007B-Examen */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BEFBD17C2CF50D5E00C92F63 /* TC2007B-Examen */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BEFBD1C72CF5319900C92F63 /* Exceptions for "TC2007B-Examen" folder in "TC2007B-Examen" target */,
+			);
 			path = "TC2007B-Examen";
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEFBD1B42CF523CE00C92F63 /* SDWebImageSwiftUI in Frameworks */,
+				BEFBD1B12CF523BD00C92F63 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = "TC2007B-Examen";
 			packageProductDependencies = (
+				BEFBD1B02CF523BD00C92F63 /* Alamofire */,
+				BEFBD1B32CF523CE00C92F63 /* SDWebImageSwiftUI */,
 			);
 			productName = "TC2007B-Examen";
 			productReference = BEFBD17A2CF50D5E00C92F63 /* TC2007B-Examen.app */;
@@ -195,6 +217,10 @@
 			);
 			mainGroup = BEFBD1712CF50D5E00C92F63;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BEFBD1AF2CF523BD00C92F63 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BEFBD1B22CF523CE00C92F63 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BEFBD17B2CF50D5E00C92F63 /* Products */;
 			projectDirPath = "";
@@ -271,6 +297,8 @@
 /* Begin XCBuildConfiguration section */
 		BEFBD19C2CF50D6000C92F63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = BEFBD17C2CF50D5E00C92F63 /* TC2007B-Examen */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -390,6 +418,8 @@
 		};
 		BEFBD19F2CF50D6000C92F63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = BEFBD17C2CF50D5E00C92F63 /* TC2007B-Examen */;
+			baseConfigurationReferenceRelativePath = Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -399,6 +429,7 @@
 				DEVELOPMENT_TEAM = 66Y7PNN278;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TC2007B-Examen/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +459,7 @@
 				DEVELOPMENT_TEAM = 66Y7PNN278;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TC2007B-Examen/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +590,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEFBD1AF2CF523BD00C92F63 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		BEFBD1B22CF523CE00C92F63 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEFBD1B02CF523BD00C92F63 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEFBD1AF2CF523BD00C92F63 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BEFBD1B32CF523CE00C92F63 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEFBD1B22CF523CE00C92F63 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BEFBD1722CF50D5E00C92F63 /* Project object */;
 }

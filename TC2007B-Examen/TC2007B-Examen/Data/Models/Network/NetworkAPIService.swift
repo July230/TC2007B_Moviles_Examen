@@ -12,7 +12,7 @@ class NetworkAPIService {
     static let shared = NetworkAPIService() // Singleton, only one instance
     
     // fetchCovidData gets the JSON from API Ninjas
-    func fetchCovidData(url: URL, apiKey: String) async -> Covid? {
+    func fetchCovidData(url: URL, apiKey: String) async -> [Covid]? {
         // Add header with API
         let headers: HTTPHeaders = [
             "X-API-Key": apiKey
@@ -31,7 +31,7 @@ class NetworkAPIService {
             do {
                 print("Data fetched successfully")
                 // JSONDecoder, object that decodifies istances of JSONs with decode
-                let covidData = try JSONDecoder().decode(Covid.self, from: data)
+                let covidData = try JSONDecoder().decode([Covid].self, from: data)
                 return covidData
             } catch {
                 print("Error decoding JSON: \(error)")

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CovidListRequirementProtocol {
-    func getCovidList(country: String?, region: String?) async -> Covid?
+    func getCovidList(country: String?) async -> [Covid]?
 }
 
 class CovidListRequirement: CovidListRequirementProtocol {
@@ -19,7 +19,7 @@ class CovidListRequirement: CovidListRequirementProtocol {
         self.covidRepository = covidRepository
     }
     
-    func getCovidList(country: String? = nil, region: String? = nil) async -> Covid? {
-        return await covidRepository.getCovidList(country: country, region: region)
+    func getCovidList(country: String? = nil) async -> [Covid]? {
+        return await covidRepository.getCovidList(country: country)
     }
 }

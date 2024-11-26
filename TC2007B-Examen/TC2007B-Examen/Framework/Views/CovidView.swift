@@ -10,7 +10,6 @@ import SwiftUI
 struct CovidView: View {
     @StateObject var covidViewModel = CovidViewModel()
     @State private var countryInput: String = ""
-    @State private var regionInput: String = ""
     @State private var isLoading: Bool = false
     @State private var errorMessage: String? = nil
     var body: some View {
@@ -21,18 +20,23 @@ struct CovidView: View {
                     TextField("Ingresa un país: ", text: $countryInput)
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Ingresa una región: ", text: $regionInput)
-                        .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }.padding()
                 
                 Button {
+                    guard !countryInput.isEmpty else {
+                        errorMessage = "Por favor ingresa un país."
+                        return
+                    }
                     print("Buscando país")
                     Task {
                         isLoading = true
                         errorMessage = nil
-                        await covidViewModel.getCovidList(country: countryInput, region: regionInput)
+                        await covidViewModel.getCovidList(country: countryInput)
                         isLoading = false
+                        
+                        if covidViewModel.covidList.isEmpty {
+                            errorMessage = "No se encontraron datos para la búsqueda."
+                        }
                     }
                     
                 } label: {
@@ -49,6 +53,7 @@ struct CovidView: View {
                 } else if let errorMessage = errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
                         .padding()
                 } else if covidViewModel.covidList.isEmpty {
                     Text("No se encontraron datos")
@@ -60,6 +65,7 @@ struct CovidView: View {
                             Text(covid.covid.country)
                             Text(covid.covid.region)
                                 .foregroundColor(.gray)
+                                .font(.subheadline)
                             
                             ForEach(covid.covid.cases.keys.sorted(), id: \.self) { date in
                                 if let caseData = covid.covid.cases[date] {
@@ -70,6 +76,7 @@ struct CovidView: View {
                                 }
                             }
                         }
+                        .padding()
                     }
                 }
             }

@@ -18,17 +18,19 @@ class CovidViewModel: ObservableObject {
     
     @MainActor
     func getCovidList(country: String? = nil, region: String? = nil) async {
-        guard let result = await covidListRequirement.getCovidList(country: country, region: region) else {
+        guard let results = await covidListRequirement.getCovidList(country: country) else {
             print("Failed to fetch Covid data")
             return
         }
         
         var tempList = [CovidBase]()
-        for (date, caseDate) in result.cases {
-            let tempCovid = Covid(country: result.country, region: result.region, cases: [date: caseDate])
-            let covidBase = CovidBase(covid: tempCovid)
-            // Add created object to tempList
-            tempList.append(covidBase)
+        for result in results {
+            for (date, caseDate) in result.cases {
+                let tempCovid = Covid(country: result.country, region: result.region, cases: [date: caseDate])
+                let covidBase = CovidBase(covid: tempCovid)
+                // Add created object to tempList
+                tempList.append(covidBase)
+            }
         }
         self.covidList = tempList
     }

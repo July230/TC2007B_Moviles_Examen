@@ -24,10 +24,12 @@ class CovidViewModel: ObservableObject {
         }
         
         var tempList = [CovidBase]()
+        var uniqueId = 0 // Counter to generate unique Ids
         for result in results {
             for (date, caseDate) in result.cases {
                 let tempCovid = Covid(country: result.country, region: result.region, cases: [date: caseDate])
-                let covidBase = CovidBase(covid: tempCovid)
+                let covidBase = CovidBase(id: uniqueId, covid: tempCovid)
+                uniqueId += 1
                 // Add created object to tempList
                 tempList.append(covidBase)
             }

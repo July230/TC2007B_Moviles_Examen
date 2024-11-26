@@ -85,7 +85,3 @@ struct CovidView: View {
         }
     }
 }
-
-#Preview {
-    CovidView()
-}

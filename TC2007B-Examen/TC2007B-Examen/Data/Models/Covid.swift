@@ -19,6 +19,6 @@ struct Cases: Codable {
 }
 
 struct CovidBase: Identifiable {
-    var id: String { "\(covid.country)-\(covid.region)" } // We will use Country and region as ID
+    var id: Int
     var covid: Covid
 }
